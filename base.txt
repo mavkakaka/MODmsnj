@@ -1,0 +1,36 @@
+local memory = require 'memory'
+local imgui = require 'mimgui'
+
+local MDS = MONET_DPI_SCALE
+local window = imgui.new.bool(false)
+
+imgui.OnInitialize(function()
+    imgui.GetIO().IniFilename = nil
+    imgui.GetStyle():ScaleAllSizes(MDS)
+end)
+
+imgui.OnFrame(function ()
+    return window[0]
+end, function()
+    local resX, resY = getScreenResolution()
+
+    -- Configuração inicial da janela
+    imgui.SetNextWindowPos(imgui.ImVec2(resX/2, resY/2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.5, 0.5))
+    imgui.SetNextWindowSize(imgui.ImVec2(250 * MDS, 150 * MDS), imgui.Cond.FirstUseEver)
+    
+    -- Início do painel em branco
+    imgui.Begin("SULISTA BASE", window)
+
+    -- Aqui você pode adicionar novos elementos futuramente
+
+    imgui.End()
+end)
+
+-- Comando para abrir/fechar o painel
+sampRegisterChatCommand("base", function()
+    window[0] = not window[0]
+end)
+
+function main()
+    wait(-1)
+end
