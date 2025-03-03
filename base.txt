@@ -19,7 +19,7 @@ end, function()
     imgui.SetNextWindowSize(imgui.ImVec2(250 * MDS, 150 * MDS), imgui.Cond.FirstUseEver)
     
     -- Início do painel em branco
-    imgui.Begin("SULISTA BASE", window)
+    imgui.Begin("SULISTA GAY", window)
 
     -- Aqui você pode adicionar novos elementos futuramente
 
